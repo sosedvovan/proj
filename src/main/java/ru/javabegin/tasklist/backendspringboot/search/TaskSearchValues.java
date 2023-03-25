@@ -15,8 +15,8 @@ public class TaskSearchValues {
     // поля поиска (все типы - объектные, не примитивные. Чтобы можно было передать null)
     private String title;
     private Integer completed;
-    private Long priorityId;
-    private Long categoryId;
+    private Long priorityId;//храним только id, а не весь объект приоритета
+    private Long categoryId;//храним только id, а не весь объект категории
 
     // постраничность
     private Integer pageNumber;

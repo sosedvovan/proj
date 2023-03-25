@@ -5,6 +5,7 @@ package ru.javabegin.tasklist.backendspringboot.search;
 //@Setter
 //@AllArgsConstructor
 //@Data
+
 // возможные значения, по которым можно искать категории
 public class CategorySearchValues {
 

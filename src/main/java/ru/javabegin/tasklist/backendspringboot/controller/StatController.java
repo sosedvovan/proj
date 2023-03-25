@@ -31,7 +31,7 @@ public class StatController {
     private final Long defaultId = 1l; // l - чтобы тип числа был Long, иначе будет ошибка компиляции
 
 
-    // для статистика всгда получаем только одну строку с id=1 (согласно таблице БД)
+    // для статистики всгда получаем только одну строку с id=1 (согласно таблице БД)
     @GetMapping("/stat")
     public ResponseEntity<Stat> findById() {
 

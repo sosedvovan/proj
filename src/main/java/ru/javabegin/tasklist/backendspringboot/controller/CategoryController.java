@@ -12,7 +12,8 @@ import ru.javabegin.tasklist.backendspringboot.util.MyLogger;
 import java.util.List;
 import java.util.NoSuchElementException;
 
-// Если возникнет exception - клиенту вернется код  500 Internal Server Error, поэтому не нужно все действия оборачивать в try-catch
+// Если возникнет exception - клиенту вернется код  500 Internal Server Error, поэтому не нужно все действия оборачивать
+// в try-catch
 
 // используем @RestController вместо обычного @Controller, чтобы все ответы сразу оборачивались в JSON
 // иначе пришлось бы выполнять лишнюю работу, использовать @ResponseBody для ответа, указывать тип отправки JSON
@@ -20,7 +21,7 @@ import java.util.NoSuchElementException;
 // Названия методов могут быть любыми, главное не дублировать их имена и URL mapping
 @RestController
 @RequestMapping ("/category") // базовый адрес
-//разрешить этому ресурсу получать данные сэтого бекэнда(обход блокировок браузеров)
+//разрешить этому ресурсу получать данные с этого бекэнда (обход блокировок браузеров)
 @CrossOrigin(origins = "http://localhost:4200")
 public class CategoryController {
 
@@ -51,7 +52,8 @@ public class CategoryController {
 
         // проверка на обязательные параметры
         if (category.getId() != null && category.getId() != 0) {
-            // id создается автоматически в БД (autoincrement), поэтому его передавать не нужно, иначе может быть конфликт уникальности значения
+            // id создается автоматически в БД (autoincrement), поэтому его передавать не нужно, иначе может быть
+            // конфликт уникальности значения
             return new ResponseEntity("redundant param: id MUST be null", HttpStatus.NOT_ACCEPTABLE);
         }
 

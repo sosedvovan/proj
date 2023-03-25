@@ -32,6 +32,7 @@ public class Category {
         return id;
     }
 
+    //https://javascopes.com/jpa-basic-annotation-84b4ac41/
     //В @Basic optional = true по дефолту - значит что возможно Null,
     //и можно определить ленивую загрузку поля fetch = FetchType.LAZY
     //@Basic(optional = false, fetch = FetchType.LAZY)

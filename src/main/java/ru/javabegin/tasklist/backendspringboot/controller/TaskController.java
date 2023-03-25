@@ -145,44 +145,47 @@ public class TaskController {
 
         // исключить NullPointerException
         //подготавливаем значение для Title - из пришедшего в параметры дто берем Title
-        String text = taskSearchValues.getTitle() != null ? taskSearchValues.getTitle() : null;
+        String title = taskSearchValues.getTitle() != null ? taskSearchValues.getTitle() : null;
 
         //подготавливаем значение для completed
-        // конвертируем Boolean в Integer
         Integer completed = taskSearchValues.getCompleted() != null ? taskSearchValues.getCompleted() : null;
 
         //подготавливаем Id приоритета
         Long priorityId = taskSearchValues.getPriorityId() != null ? taskSearchValues.getPriorityId() : null;
+
         //подготавливаем Id категории
         Long categoryId = taskSearchValues.getCategoryId() != null ? taskSearchValues.getCategoryId() : null;
 
         //подготавливаем стрингу - поле по которому сортируем
         String sortColumn = taskSearchValues.getSortColumn() != null ? taskSearchValues.getSortColumn() : null;
+
         //подготавливаем стрингу для направления сортировки
         String sortDirection = taskSearchValues.getSortDirection() != null ? taskSearchValues.getSortDirection() : null;
-        //подготавливаем енум - направление сортировки (из стринги для направления сортировки)
-        //если sortDirection пришел null или его длина == 0 - тогда используем тоже ASC
+
+        //подготавливаем енум direction (из класса Sort) - направление сортировки (из стринги для направления сортировки)
+        //если sortDirection пришел null или его длина == 0 или пришел "asc" - тогда используем тоже ASC
         Sort.Direction direction = sortDirection == null || sortDirection.trim().length() == 0 || sortDirection.trim().equals("asc") ? Sort.Direction.ASC : Sort.Direction.DESC;
 
         //подготавливаем данные для пагинации:
         //какую страницу взять (показать)
         Integer pageNumber = taskSearchValues.getPageNumber() != null ? taskSearchValues.getPageNumber() : null;
+
         //сколько элементов показывать на странице
         Integer pageSize = taskSearchValues.getPageSize() != null ? taskSearchValues.getPageSize() : null;
 
 
-        // подставляем все значения
+        // подставляем все значения:
 
-        // объект сортировки
+        // подготавливаем объект сортировки
         Sort sort = Sort.by(direction, sortColumn);
 
-        // объект постраничности
+        // подготавливаем объект постраничности
         PageRequest pageRequest = PageRequest.of(pageNumber, pageSize, sort);
 
-        // результат запроса с постраничным выводом (объект Page возвращает наш метод из репозитория)
-        Page result = taskService.findByParams(text, completed, priorityId, categoryId, pageRequest);
+        // получаем результат запроса с постраничным выводом (объект Page возвращает наш метод из репозитория)
+        Page result = taskService.findByParams(title, completed, priorityId, categoryId, pageRequest);
 
-        // результат запроса (в ResponseEntity подаем объект Page, кот в себе содержит отсортированный
+        // возвращаем результат запроса (в ResponseEntity подаем объект Page result, кот в себе содержит отсортированный
         // лист со всеми тасками прошедшими отбор по параметрам: list<Tasks>
         // и дополнительные данные для пагинации: int getTotalPages(); , long getTotalElements(); ...)
         return ResponseEntity.ok(result);

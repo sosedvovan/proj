@@ -18,6 +18,7 @@ public class Task {
     //будем использовать не boolean, а Integer
     private Integer completed; // 1 = true, 0 = false
     private Date date;
+    //внедряем 2-а объекта
     private Priority priority;
     private Category category;
 
@@ -53,6 +54,7 @@ public class Task {
 
     // ссылка на объект Priority
     // одна задача имеет ссылку на один объект
+    // priority_id - поле в этой таблице
     @ManyToOne
     @JoinColumn(name = "priority_id", referencedColumnName = "id") // по каким полям связывать (foreign key)
     public Priority getPriority() {

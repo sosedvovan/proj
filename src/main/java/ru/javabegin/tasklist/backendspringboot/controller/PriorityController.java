@@ -28,7 +28,7 @@ public class PriorityController {
     private PriorityService priorityService;
 
     // автоматическое внедрение экземпляра класса через конструктор
-    // не используем @Autowired ля переменной класса, т.к. "Field injection is not recommended "
+    // не используем @Autowired для переменной класса, т.к. "Field injection is not recommended "
     public PriorityController(PriorityService priorityService) {
         this.priorityService = priorityService;
     }
@@ -54,7 +54,8 @@ public class PriorityController {
 
         // проверка на обязательные параметры
         if (priority.getId() != null && priority.getId() != 0) {
-            // id создается автоматически в БД (autoincrement), поэтому его передавать не нужно, иначе может быть конфликт уникальности значения
+            // id создается автоматически в БД (autoincrement), поэтому его передавать не нужно, иначе может быть
+            // конфликт уникальности значения
             return new ResponseEntity("redundant param: id MUST be null", HttpStatus.NOT_ACCEPTABLE);
         }
 

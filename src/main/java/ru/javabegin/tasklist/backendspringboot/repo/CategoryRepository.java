@@ -12,7 +12,7 @@ import java.util.List;
 @Repository
 public interface CategoryRepository extends JpaRepository<Category, Long> {
 
-    //ПОИСК КАТЕГОРИИ ПО ВХОЖДЕНИЮ БУКВ
+    //ПОИСК КАТЕГОРИИ ПО ВХОЖДЕНИЮ БУКВ (в метод придет стринга - искомое вхождение букв)
     // если title == null или =='', то получим все значения
     @Query("SELECT c FROM Category c where " +
             //проверка title == null или =='' ИЛИ ПО ВХОЖДЕНИЮ:
