@@ -152,7 +152,7 @@ public class PriorityController {
 
 
         // если вместо текста будет пусто или null - вернутся все категории
-        return ResponseEntity.ok(priorityService.findByTitle(prioritySearchValues.getText()));
+        return ResponseEntity.ok(priorityService.findByTitle(prioritySearchValues.getTitle()));
     }
 
 

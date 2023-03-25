@@ -13,9 +13,14 @@ import javax.persistence.*;
 @Setter
 @Getter
 public class Category {
+
+    //id
     private Long id;
+    //название категории
     private String title;
+    //поле, выщитывает сама дб (кол-во выполненных задач в данной категории)
     private Long completedCount;
+    //поле, выщитывает сама дб (кол-во выполненных задач в данной категории)
     private Long uncompletedCount;
 
     // указываем, что поле заполняется в БД
@@ -27,6 +32,9 @@ public class Category {
         return id;
     }
 
+    //В @Basic optional = true по дефолту - значит что возможно Null,
+    //и можно определить ленивую загрузку поля fetch = FetchType.LAZY
+    //@Basic(optional = false, fetch = FetchType.LAZY)
     @Basic
     @Column(name = "title")
     public String getTitle() {

@@ -14,8 +14,11 @@ import javax.persistence.Id;
 @Setter
 @EqualsAndHashCode
 public class Stat { // в этой таблице всего 1 запись, которая обновляется (но никогда не удаляется)
+
     private Long id;
+    //кол-во всех выполненных задач, высчитывает сама дб с помощью трегеров
     private Long completedTotal;
+    //кол-во всех невыполненных задач, высчитывает сама дб с помощью трегеров
     private Long uncompletedTotal;
 
     @Id
